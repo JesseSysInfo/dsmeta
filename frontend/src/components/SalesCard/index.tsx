@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../utils/request';
 import { Sale } from '../../models/sale';
+import { formatCurrencyBr } from '../../utils/functions';
 
 function SalesCard() {
 
@@ -72,10 +73,10 @@ function SalesCard() {
                                             <td>{sale.sellerName}</td>
                                             <td className="show992">{sale.visited}</td>
                                             <td className="show992">{sale.deals}</td>
-                                            <td>R$ {sale.amount.toFixed(2)}</td>
+                                            <td>{formatCurrencyBr(sale.amount)}</td>
                                             <td>
                                                 <div className="dsmeta-red-btn-container">
-                                                    <NotificationButton />
+                                                    <NotificationButton saleId={sale.id} />
                                                 </div>
                                             </td>
                                         </tr>
